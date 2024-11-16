@@ -8,6 +8,7 @@ import math
 import random
 import sqlite3
 import numpy
+import requests 
 
 
 # Defining class place:
