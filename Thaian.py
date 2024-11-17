@@ -1,22 +1,25 @@
-#important var:!!!
-app_password = "eibefqchnaqcamuf"
-#important
+#important var!!!
+app_password = "eibefqchnaqcamuf" #do not touch on this varible
+#important var!!!
 
 import sqlite3
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+#create connection and cursor:
 conn = sqlite3.connect("data/database.db")
-
 cur = conn.cursor()
 
+#input data:
 username = input("Enter your username: ")
 email = input("Enter your email: ")
 password = input("Enter our password: ")
 
+#add the input data to the database.db file:
 cur.execute("INSERT INTO users VALUES(username,email,password)", (username,email,password))
 
+#commit and close:
 conn.commit()
 cur.close()
 
@@ -25,7 +28,6 @@ cur.close()
 # Email credentials
 sender_email = "tainambovien@gmail.com"
 receiver_email = "buithaian321@gmail.com"
-app_password = app_password  # Use the generated App Password here
 
 # Set up the MIME message
 msg = MIMEMultipart()
