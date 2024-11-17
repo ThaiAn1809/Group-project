@@ -1,3 +1,7 @@
+#important var!!!
+app_password = "eibefqchnaqcamuf" #do not touch on this varible
+#important var!!!
+
 # Chating place:
 
 # ...
@@ -12,7 +16,6 @@ import requests
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-
 
 
 
