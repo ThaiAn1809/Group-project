@@ -2,31 +2,40 @@
 app_password = "eibefqchnaqcamuf" #do not touch on this varible
 #important var!!!
 
+#IMPORT AREA:
+
 import sqlite3
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-#create connection and cursor:
-conn = sqlite3.connect("data/database.db")
-cur = conn.cursor()
 
-#input data:
-username = input("Enter your username: ")
-email = input("Enter your email: ")
-password = input("Enter our password: ")
+#FUNCTION AREA:
 
-#add the input data to the database.db file:
-cur.execute("INSERT INTO users(? ,? ,? ) VALUES(username,email,password)", (username,email,password))
+#funtion insert Username-Email-Password to the database
+def insert_u_e_p(username: str,email: str,password: str):
+    """Function that inserts Username-Email-Password to the database.db
 
-#commit and close:
-conn.commit()
-cur.close()
+    Args:
+        username (str): the user's useraname
+        email (str): the user's email
+        password (str): the user's password
+    """
+
+    #create connection and cursor:
+    conn = sqlite3.connect("data/database.db")
+    cur = conn.cursor()
+
+    #add the input data to the database.db file:
+    cur.execute("INSERT INTO users(? ,? ,? ) VALUES(username,email,password)", (username,email,password))
+
+    #commit and close:
+    conn.commit()
+    cur.close()
 
 
 
-def send_email(sender_email,receiver_email,subject,body,app_password):
-
+def send_email(sender_email: str,receiver_email: str,subject: str,body: str,app_password: str):
 
     # Set up the MIME message
     msg = MIMEMultipart()
@@ -49,6 +58,11 @@ def send_email(sender_email,receiver_email,subject,body,app_password):
 
     except Exception as e:
         print(f"Failed to send email: {e}")
+
+#input data:
+username = input("Enter your username: ")
+email = input("Enter your email: ")
+password = input("Enter our password: ")
 
 # Email credentials
 sender_email = "tainambovien@gmail.com"
