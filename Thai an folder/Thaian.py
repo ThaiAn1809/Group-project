@@ -20,6 +20,15 @@ class InvaildEmail(Exception):
     """
     def __init__(self, message):
         super().__init__(message)
+        
+class InvaildPassword(Exception):
+    """a custom exception name InvaildPassword
+
+    Args:
+        Exception (type): the Exception class
+    """
+    def __init__(self, message):
+        super().__init__(message)
 
 #CLASS AREA:
 
@@ -40,7 +49,8 @@ class Email:
     def is_valid(self) -> bool:
         return re.match(self.EMAIL_REGEX, self.address) is not None
 
-
+class Password:
+    pass
 
 #FUNCTION AREA:
 
