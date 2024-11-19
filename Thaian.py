@@ -17,7 +17,7 @@ email = input("Enter your email: ")
 password = input("Enter our password: ")
 
 #add the input data to the database.db file:
-cur.execute("INSERT INTO users VALUES(username,email,password)", (username,email,password))
+cur.execute("INSERT INTO users(? ,? ,? ) VALUES(username,email,password)", (username,email,password))
 
 #commit and close:
 conn.commit()
@@ -25,29 +25,35 @@ cur.close()
 
 
 
+def send_email(sender_email,receiver_email,subject,body,app_password):
+
+
+    # Set up the MIME message
+    msg = MIMEMultipart()
+    msg['From'] = sender_email
+    msg['To'] = receiver_email
+    msg['Subject'] = subject
+
+    # Add the body of the email
+    msg.attach(MIMEText(body, 'plain'))
+
+    # Set up the SMTP server
+    try:
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()  # Secure the connection
+        server.login(sender_email, app_password)  # Login using App Password
+        server.sendmail(sender_email, receiver_email, msg.as_string())
+        server.quit()
+
+        print("Email sent successfully!")
+
+    except Exception as e:
+        print(f"Failed to send email: {e}")
+
 # Email credentials
 sender_email = "tainambovien@gmail.com"
-receiver_email = "buithaian321@gmail.com"
+receiver_email = "buithaian321@gmail.com" #for example
+subject = "Important email from TaskMaster app"
+body = "Just testing:)))"
 
-# Set up the MIME message
-msg = MIMEMultipart()
-msg['From'] = sender_email
-msg['To'] = receiver_email
-msg['Subject'] = "Test Email using App Password"
-
-# Add the body of the email
-body = "Hello, this email is sent using an App Password."
-msg.attach(MIMEText(body, 'plain'))
-
-# Set up the SMTP server
-try:
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()  # Secure the connection
-    server.login(sender_email, app_password)  # Login using App Password
-    server.sendmail(sender_email, receiver_email, msg.as_string())
-    server.quit()
-
-    print("Email sent successfully!")
-
-except Exception as e:
-    print(f"Failed to send email: {e}")
+send_email(sender_email,receiver_email,subject,body,app_password)
