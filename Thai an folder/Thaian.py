@@ -6,9 +6,9 @@ app_password = "eibefqchnaqcamuf" #do not touch on this varible
 
 import sqlite3
 import smtplib
+import re
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import re
 
 #CLASS EXCEPTION AREA:
 
