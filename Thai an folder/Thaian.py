@@ -8,11 +8,42 @@ import sqlite3
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import re
+
+#CLASS EXCEPTION AREA:
+
+class InvaildEmail(Exception):
+    """a custom exception name InvaildEmail
+
+    Args:
+        Exception (type): the Exception class
+    """
+    def __init__(self, message):
+        super().__init__(message)
+
+#CLASS AREA:
+
+class Email:
+    """ a email type
+
+    Raises:
+        InvaildEmail: raise this if the email is invaild
+
+    """
+    EMAIL_REGEX = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+    
+    def __init__(self, address: str):
+        self.address = address
+        if not self.is_valid():
+            raise InvaildEmail(f"Invalid email address: '{address}'")
+
+    def is_valid(self) -> bool:
+        return re.match(self.EMAIL_REGEX, self.address) is not None
+
 
 
 #FUNCTION AREA:
 
-#funtion insert Username-Email-Password to the database
 def insert_u_e_p(username: str,email: str,password: str):
     """Function that inserts Username-Email-Password to the database.db
 
@@ -36,7 +67,15 @@ def insert_u_e_p(username: str,email: str,password: str):
 
 
 def send_email(sender_email: str,receiver_email: str,subject: str,body: str,app_password: str):
+    """send an email
 
+    Args:
+        sender_email (str): the sender email
+        receiver_email (str): the receiver_email
+        subject (str): the subject of the email
+        body (str): the body of the email
+        app_password (str): :)
+    """
     # Set up the MIME message
     msg = MIMEMultipart()
     msg['From'] = sender_email
