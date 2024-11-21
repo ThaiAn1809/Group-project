@@ -65,7 +65,7 @@ class Password:
     """a password type
 
     Raises:
-        InvaildPassword: raise this if the email is invaild
+        InvaildPassword: raise this if the password is invaild
 
     """
 
@@ -159,38 +159,24 @@ class Password:
             ";",
             "",
         ]
-        return (
-            (self.__alphabet in self.password)
-            and (self.__upper_alphabet in self.password)
-            and (self.__symbols in self.password) is not None
-        )
+        have_alpha = False
+        have_alpha_upper = False
+        have_symbol = False
+        for i in self.__alphabet:
+            if i in self.password:
+                have_alpha = True
+
+        for i in self.__upper_alphabet:
+            if i in self.password:
+                have_alpha_upper = True
+
+        for i in self.__alphabet:
+            if i in self.password:
+                have_symbol = True
+        return have_alpha and have_alpha_upper and have_symbol is not None
 
 
 # FUNCTION AREA:
-
-
-def insert_u_e_p(username: str, email: str, password: str):
-    """Function that inserts Username-Email-Password to the database.db
-
-    Args:
-        username (str): the user's useraname
-        email (str): the user's email
-        password (str): the user's password
-    """
-
-    # create connection and cursor:
-    conn = sqlite3.connect("data/database.db")
-    cur = conn.cursor()
-
-    # add the input data to the database.db file:
-    cur.execute(
-        "INSERT INTO users(? ,? ,? ) VALUES(username,email,password)",
-        (username, email, password),
-    )
-
-    # commit and close:
-    conn.commit()
-    cur.close()
 
 
 def send_email(
@@ -228,17 +214,36 @@ def send_email(
         print(f"Failed to send email: {e}")
 
 
+# CODE AREA:
+
 conn = sqlite3.connect("data/database.db")
 cur = conn.cursor()
 
-# Email credentials
-sender_email = "TaskManagerApp2025@gmail.com"
-receiver_email = "buithaian321@gmail.com"  # for example
-subject = "Important email from TaskMaster app"
-body = "Just testing:)))"
+username = input("Enter your username: ")
+while True:
+    email = input("Enter your email: ")
+    try:
+        Email(email)
+    except InvaildEmail as e:
+        print(f"Error: {e}")
+    else:
+        break
 
-send_email(sender_email, receiver_email, subject, body, app_password)
+while True:
+    password = input(
+        "Enter your password (include lower and uppercase letters, symbols): "
+    )
+    try:
+        Password(password)
+    except InvaildPassword as e:
+        print(f"Error: {e}")
+    else:
+        break
 
+cur.execute(
+    """INSERT INTO users (username,email,password) VALUES (?,?,?)""",
+    (username, email, password),
+)
 
 conn.commit()
 cur.close()
