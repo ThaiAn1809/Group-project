@@ -205,7 +205,7 @@ def send_email(
         body (str): the body of the email
         app_password (str): :)
     """
-    # Set up the MIME message
+    # Set up the MIME messagexc
     msg = MIMEMultipart()
     msg["From"] = sender_email
     msg["To"] = receiver_email
