@@ -28,14 +28,14 @@
     </property>
     <property name="font">
      <font>
-      <family>Nunito SemiBold</family>
-      <pointsize>11</pointsize>
+      <family>Segoe UI</family>
+      <pointsize>10</pointsize>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit{
-	background-color: transparent;
+	background-color: white;
 	border: 2px solid #cccccc;
 	border-radius:25px;
 	padding:10px;
@@ -63,15 +63,14 @@ QLineEdit:hover {
     </property>
     <property name="font">
      <font>
-      <family>Nunito SemiBold</family>
-      <pointsize>11</pointsize>
-      <italic>false</italic>
+      <family>Segoe UI</family>
+      <pointsize>10</pointsize>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit{
-	background-color: transparent;
+	background-color: white;
 	border: 2px solid #cccccc;
 	border-radius:25px;
 	padding:10px;
@@ -132,7 +131,7 @@ QPushButton:pressed{
      <rect>
       <x>340</x>
       <y>417</y>
-      <width>111</width>
+      <width>131</width>
       <height>21</height>
      </rect>
     </property>
@@ -147,9 +146,9 @@ color: black;</string>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>540</x>
       <y>417</y>
-      <width>101</width>
+      <width>131</width>
       <height>21</height>
      </rect>
     </property>
@@ -166,22 +165,22 @@ QPushButton:hover {
 </string>
     </property>
     <property name="text">
-     <string>Forgot password</string>
+     <string>Forgot password?</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>360</x>
       <y>150</y>
-      <width>261</width>
+      <width>291</width>
       <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Nunito SemiBold</family>
-      <pointsize>26</pointsize>
+      <family>Segoe UI</family>
+      <pointsize>24</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -196,10 +195,10 @@ color: black;</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>467</y>
-      <width>91</width>
-      <height>16</height>
+      <x>440</x>
+      <y>462</y>
+      <width>141</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
@@ -214,7 +213,7 @@ color: black;</string>
 color: black;</string>
     </property>
     <property name="text">
-     <string>-Or login with-</string>
+     <string>--Or login with--</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_3">
@@ -223,13 +222,13 @@ color: black;</string>
       <x>330</x>
       <y>500</y>
       <width>80</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Nunito SemiBold</family>
-      <pointsize>11</pointsize>
+      <family>Segoe UI</family>
+      <pointsize>9</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -237,8 +236,8 @@ color: black;</string>
      <string notr="true">QPushButton{
     background-color: white;
 	color: black;
-    border: 1px solid #cccccc; /* Optional border for better visibility */
-	border-radius: 10px;
+    border: 2px solid #cccccc; /* Optional border for better visibility */
+	border-radius: 15px;
 	padding:5px;
 	color: rgb(94, 94, 94);
 }
@@ -250,22 +249,22 @@ QPushButton:pressed{
 }</string>
     </property>
     <property name="text">
-     <string>Gmail</string>
+     <string>Google</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>600</x>
       <y>500</y>
       <width>80</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Nunito SemiBold</family>
-      <pointsize>11</pointsize>
+      <family>Segoe UI</family>
+      <pointsize>9</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -273,8 +272,8 @@ QPushButton:pressed{
      <string notr="true">QPushButton{
     background-color: white;
 	color: black;
-    border: 1px solid #cccccc; /* Optional border for better visibility */
-	border-radius: 10px;
+    border: 2px solid #cccccc; /* Optional border for better visibility */
+	border-radius: 15px;
 	padding:5px;
 	color: rgb(94, 94, 94);
 }
@@ -295,13 +294,13 @@ QPushButton:pressed{
       <x>509</x>
       <y>500</y>
       <width>81</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Nunito SemiBold</family>
-      <pointsize>11</pointsize>
+      <family>Segoe UI</family>
+      <pointsize>9</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -309,8 +308,8 @@ QPushButton:pressed{
      <string notr="true">QPushButton{
     background-color: white;
 	color: black;
-    border: 1px solid #cccccc; /* Optional border for better visibility */
-	border-radius: 10px;
+    border: 2px solid #cccccc; /* Optional border for better visibility */
+	border-radius: 15px;
 	padding:5px;
 	color: rgb(94, 94, 94);
 }
@@ -328,16 +327,16 @@ QPushButton:pressed{
    <widget class="QPushButton" name="pushButton_6">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>420</x>
       <y>500</y>
       <width>80</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Nunito SemiBold</family>
-      <pointsize>11</pointsize>
+      <family>Segoe UI</family>
+      <pointsize>9</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -345,8 +344,8 @@ QPushButton:pressed{
      <string notr="true">QPushButton{
     background-color: white;
 	color: black;
-    border: 1px solid #cccccc; /* Optional border for better visibility */
-	border-radius: 10px;
+    border: 2px solid #cccccc; /* Optional border for better visibility */
+	border-radius: 15px;
 	padding:5px;
 	color: rgb(94, 94, 94);
 }
@@ -364,15 +363,15 @@ QPushButton:pressed{
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>80</y>
-      <width>471</width>
-      <height>511</height>
+      <x>280</x>
+      <y>100</y>
+      <width>451</width>
+      <height>491</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QFrame {
-    background-color: rgb(255, 255, 255); /* White with 70% opacity */
+    background-color: rgba(255, 255, 255, 0.7); /* White with 70% opacity */
     border-radius: 30px; /* Rounded corners */
     border: 1px solid #cccccc; /* Optional: Light gray border */
     padding: 10px;
@@ -394,6 +393,9 @@ QPushButton:pressed{
       <width>1201</width>
       <height>721</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: black;</string>
     </property>
     <property name="text">
      <string/>
@@ -425,7 +427,7 @@ QPushButton:pressed{
      <x>0</x>
      <y>0</y>
      <width>1024</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
