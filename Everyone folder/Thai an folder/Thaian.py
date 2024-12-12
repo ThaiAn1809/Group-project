@@ -14,7 +14,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 
-# ====================CLASS EXCEPTION AREA====================:
+# ==============CLASS EXCEPTION AREA==============:
 
 
 class InvaildEmail(Exception):
