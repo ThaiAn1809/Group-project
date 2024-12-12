@@ -271,4 +271,4 @@ def main():
     cur.close()
 
 if __name__ == "__main__":    
-    sample: list[int] = ["a",1,"?"]
+    main()
