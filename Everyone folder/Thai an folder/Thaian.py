@@ -272,4 +272,4 @@ def main():
     cur.close()
 
 if __name__ == "__main__":    
-    pass
+    print("hello")
