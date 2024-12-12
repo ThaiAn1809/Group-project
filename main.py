@@ -19,8 +19,10 @@ from email.mime.text import MIMEText
 
 # ====================FUNCTION AREA====================:
 
+def main()->None:
+    raise NotImplementedError("main() is missing code.")
+
 
 if __name__ == "__main__":
     # ====================CODE AREA====================:
-
-    pass
+    main()

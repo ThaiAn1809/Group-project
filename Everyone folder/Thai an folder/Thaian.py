@@ -1,7 +1,7 @@
 # ====================IMPORTANT THINGS====================:
 
 # ! important variables!!!:
-app_password = "fimhhmpykyoyaxuc"  # ! do not touch on this varible
+app_password: str = "fimhhmpykyoyaxuc"  # ! do not touch on this varible
 # ! important variables!!!
 
 # ====================IMPORT AREA====================:
@@ -69,7 +69,7 @@ class Email:
         """
         return re.match(self.EMAIL_REGEX, self.address) is not None
 
-    def returns_email(self):
+    def returns_email(self) -> str:
         return self.address
 
     def taskmanagerapp2025_send_email(
@@ -224,11 +224,12 @@ class Password:
                 have_symbol = True
         return have_alpha and have_alpha_upper and have_symbol is not None
 
-    def return_password(self):
+    def return_password(self) -> str:
         return self.password
 
 
 # ====================FUNCTION AREA====================:
+
 
 
 # ====================CODE TEST AREA====================:
@@ -237,22 +238,22 @@ def main():
     conn = sqlite3.connect("data/database.db")
     cur = conn.cursor()
 
-    username = input("Enter your username: ")
+    username: str = input("Enter your username: ")
     while True:
-        email = input("Enter your email: ")
+        email:str = input("Enter your email: ")
         try:
-            user_email = Email(email)
+            user_email:type = Email(email)
         except InvaildEmail as e:
             print(f"Error: {repr(e)}")
         else:
             break
 
     while True:
-        password = input(
+        password:str = input(
             "Enter your password (include lower and uppercase letters, symbols): "
         )
         try:
-            user_password = Password(password)
+            user_password:type = Password(password)
         except InvaildPassword as e:
             print(f"Error: {repr(e)}")
         else:
@@ -271,4 +272,4 @@ def main():
     cur.close()
 
 if __name__ == "__main__":    
-    main()
+    pass
