@@ -1,6 +1,7 @@
-# important var!!!
-app_password = "fimhhmpykyoyaxuc"  # do not touch on this varible
-# important var!!!
+
+# ! important variables!!!:
+app_password = "fimhhmpykyoyaxuc"  # ! do not touch on this varible
+# ! important variables!!!
 
 # IMPORT AREA:
 
@@ -214,7 +215,7 @@ def send_email(
         print(f"Failed to send email: {e}")
 
 
-# CODE AREA:
+# CODE TEST AREA:
 
 conn = sqlite3.connect("data/database.db")
 cur = conn.cursor()
