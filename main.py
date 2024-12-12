@@ -1,8 +1,8 @@
-# Chating place:
+# ====================CHATING AREA====================:
 
-# ...
 
-# Importing place:
+# ====================IMPORT AREA====================:
+
 
 import math
 import random
@@ -14,13 +14,13 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 
-# Defining class place:
+# ====================CLASS AREA====================:
 
-# ...
 
-# Defining function place:
+# ====================FUNCTION AREA====================:
 
-# ...
 
 if __name__ == "__main__":
+    # ====================CODE AREA====================:
+
     pass

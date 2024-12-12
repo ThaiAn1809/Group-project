@@ -1,9 +1,11 @@
+# ====================IMPORTANT THINGS====================:
 
 # ! important variables!!!:
 app_password = "fimhhmpykyoyaxuc"  # ! do not touch on this varible
 # ! important variables!!!
 
-# IMPORT AREA:
+# ====================IMPORT AREA====================:
+
 
 import sqlite3
 import smtplib
@@ -11,7 +13,8 @@ import re
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-# CLASS EXCEPTION AREA:
+
+# ====================CLASS EXCEPTION AREA====================:
 
 
 class InvaildEmail(Exception):
@@ -21,7 +24,7 @@ class InvaildEmail(Exception):
         Exception (type): the Exception class
     """
 
-    def __init__(self, email, message="Invaild email"):
+    def __init__(self, email: str, message="Invaild email"):
         self.mesage = message
         self.email = email
         super().__init__(f"{message}: {email}")
@@ -34,13 +37,13 @@ class InvaildPassword(Exception):
         Exception (type): the Exception class
     """
 
-    def __init__(self, password, message="Invaild password"):
+    def __init__(self, password: str, message="Invaild password"):
         self.mesage = message
         self.email = password
         super().__init__(f"{message}: {password}")
 
 
-# CLASS AREA:
+# ====================CLASS AREA====================:
 
 
 class Email:
@@ -59,7 +62,52 @@ class Email:
             raise InvaildEmail(address)
 
     def is_valid(self) -> bool:
+        """This method is for __init__ method for checking if this email is valid or not
+
+        Returns:
+            bool: return True if this email is valid and not if this email isn't valid
+        """
         return re.match(self.EMAIL_REGEX, self.address) is not None
+
+    def returns_email(self):
+        return self.address
+
+    def taskmanagerapp2025_send_email(
+        self, subject: str, body: str, app_password: str = app_password
+    ):
+        """This method send an email
+
+        Args:
+            reciver_email (str): the reciver of the email
+            subject (str): the subject of the email
+            body (str): the body of the email
+            app_password (str): # !THIS EMAIL CAN BE SEND OR CAN'T BE SEND DEPENDS ON THIS app_password VARIABLE
+        """
+        # Set up the MIME messagexc
+        msg = MIMEMultipart()
+        msg["From"] = "taskmanagerapp2025@gmail.com"
+        msg["To"] = self.address
+        msg["Subject"] = subject
+
+        # Add the body of the email
+        msg.attach(MIMEText(body, "plain"))
+
+        # Set up the SMTP server
+        try:
+            server = smtplib.SMTP("smtp.gmail.com", 587)
+            server.starttls()  # Secure the connection
+            server.login(
+                "taskmanagerapp2025@gmail.com", app_password
+            )  # Login using App Password
+            server.sendmail(
+                "taskmanagerapp2025@gmail.com", self.address, msg.as_string()
+            )
+            server.quit()
+
+            print("Email sent successfully!")
+
+        except Exception as e:
+            print(f"Failed to send email: {repr(e)}")
 
 
 class Password:
@@ -176,75 +224,51 @@ class Password:
                 have_symbol = True
         return have_alpha and have_alpha_upper and have_symbol is not None
 
-
-# FUNCTION AREA:
-
-
-def send_email(
-    sender_email: str, receiver_email: str, subject: str, body: str, app_password: str
-):
-    """send an email
-
-    Args:
-        sender_email (str): the sender email
-        receiver_email (str): the receiver_email
-        subject (str): the subject of the email
-        body (str): the body of the email
-        app_password (str): :)
-    """
-    # Set up the MIME messagexc
-    msg = MIMEMultipart()
-    msg["From"] = sender_email
-    msg["To"] = receiver_email
-    msg["Subject"] = subject
-
-    # Add the body of the email
-    msg.attach(MIMEText(body, "plain"))
-
-    # Set up the SMTP server
-    try:
-        server = smtplib.SMTP("smtp.gmail.com", 587)
-        server.starttls()  # Secure the connection
-        server.login(sender_email, app_password)  # Login using App Password
-        server.sendmail(sender_email, receiver_email, msg.as_string())
-        server.quit()
-
-        print("Email sent successfully!")
-
-    except Exception as e:
-        print(f"Failed to send email: {e}")
+    def return_password(self):
+        return self.password
 
 
-# CODE TEST AREA:
+# ====================FUNCTION AREA====================:
 
-conn = sqlite3.connect("data/database.db")
-cur = conn.cursor()
 
-username = input("Enter your username: ")
-while True:
-    email = input("Enter your email: ")
-    try:
-        Email(email)
-    except InvaildEmail as e:
-        print(f"Error: {e}")
-    else:
-        break
+# ====================CODE TEST AREA====================:
 
-while True:
-    password = input(
-        "Enter your password (include lower and uppercase letters, symbols): "
+def main():
+    conn = sqlite3.connect("data/database.db")
+    cur = conn.cursor()
+
+    username = input("Enter your username: ")
+    while True:
+        email = input("Enter your email: ")
+        try:
+            user_email = Email(email)
+        except InvaildEmail as e:
+            print(f"Error: {repr(e)}")
+        else:
+            break
+
+    while True:
+        password = input(
+            "Enter your password (include lower and uppercase letters, symbols): "
+        )
+        try:
+            user_password = Password(password)
+        except InvaildPassword as e:
+            print(f"Error: {repr(e)}")
+        else:
+            break
+
+    cur.execute(
+        """INSERT INTO users (username,email,password) VALUES (?,?,?)""",
+        (username, user_email.returns_email(), user_password.return_password()),
     )
-    try:
-        Password(password)
-    except InvaildPassword as e:
-        print(f"Error: {e}")
-    else:
-        break
 
-cur.execute(
-    """INSERT INTO users (username,email,password) VALUES (?,?,?)""",
-    (username, email, password),
-)
+    user_email.taskmanagerapp2025_send_email(
+        user_email, "test", "hello there!, this is a test email from taskmanagerapp2025"
+    )
 
-conn.commit()
-cur.close()
+    conn.commit()
+    cur.close()
+
+if __name__ == "__main__":    
+    sample: list[int] = ["a",1,"?"]
