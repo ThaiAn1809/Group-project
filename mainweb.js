@@ -1,10 +1,8 @@
-function outerFunction(x) {
-    function innerFunction(y) {
-        return x * y;
+function solve(x) {
+    if(x < 70){
+        console.log("Order Confirmed")
+    }else{
+        console.log("Order Limit reached")
     }
-    var result = innerFunction(x);
-    return result;
+    console.log("thank YOU!")
 }
-
-var output = outerFunction(5);
-console.log(output);

@@ -272,4 +272,4 @@ def main():
     cur.close()
 
 if __name__ == "__main__":    
-    print("hello")
+    raise NotImplementedError('if__name__ == "__main__" is missing code.')
