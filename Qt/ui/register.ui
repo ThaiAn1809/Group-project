@@ -19,11 +19,11 @@
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="name_input">
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>190</y>
+      <y>170</y>
       <width>341</width>
       <height>51</height>
      </rect>
@@ -54,11 +54,11 @@ QLineEdit:hover {
      <string>Username</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="password_input">
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>310</y>
+      <y>290</y>
       <width>341</width>
       <height>51</height>
      </rect>
@@ -92,11 +92,11 @@ QLineEdit:hover {
      <string>Password</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="register_btn">
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>380</y>
+      <y>410</y>
       <width>341</width>
       <height>51</height>
      </rect>
@@ -345,11 +345,11 @@ QPushButton:pressed{
      <enum>QFrame::Shadow::Raised</enum>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QLineEdit" name="email_input">
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>250</y>
+      <y>230</y>
       <width>341</width>
       <height>51</height>
      </rect>
@@ -380,17 +380,75 @@ QLineEdit:hover {
      <string>Email</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="login_btn">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>550</y>
+      <width>141</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">    background-color: transparent;
+    border: none;
+    color: black; /* Text color */</string>
+    </property>
+    <property name="text">
+     <string>Have an account? Login!</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="confirm_password_input">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>350</y>
+      <width>341</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>10</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color: white;
+	border: 2px solid #cccccc;
+	border-radius:25px;
+	padding:10px;
+	color: rgb(94, 94, 94);
+}
+QLineEdit:hover {
+    border-color: rgb(79, 79, 79);
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::EchoMode::Password</enum>
+    </property>
+    <property name="placeholderText">
+     <string>Confirm password</string>
+    </property>
+   </widget>
    <zorder>frame</zorder>
-   <zorder>lineEdit</zorder>
-   <zorder>lineEdit_2</zorder>
-   <zorder>pushButton</zorder>
+   <zorder>name_input</zorder>
+   <zorder>password_input</zorder>
+   <zorder>register_btn</zorder>
    <zorder>label</zorder>
    <zorder>label_2</zorder>
    <zorder>pushButton_3</zorder>
    <zorder>pushButton_4</zorder>
    <zorder>pushButton_5</zorder>
    <zorder>pushButton_6</zorder>
-   <zorder>lineEdit_3</zorder>
+   <zorder>email_input</zorder>
+   <zorder>login_btn</zorder>
+   <zorder>confirm_password_input</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
