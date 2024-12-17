@@ -9,7 +9,7 @@ app_password: str = "fimhhmpykyoyaxuc"  # ! do not touch on this varible
 from PyQt6.QtWidgets import QMainWindow,QApplication,QLineEdit,QMessageBox, QPushButton
 from PyQt6 import uic
 import sys
-import database
+import Database
 import sqlite3
 import smtplib
 import re
@@ -271,7 +271,7 @@ class Login(QMainWindow):
             self.password_input.setFocus()
             return
         
-        user = database.find_user_by_email_and_password(email,password)
+        user = Database.find_user_by_email_and_password(email,password)
         if user:
             msg = Alert()
             msg.success_message('Login succesful')
@@ -327,12 +327,12 @@ class Register(QMainWindow):
             self.confirm_password_input.setFocus()
             return
         
-        user = database.find_user_by_email(email)
+        user = Database.find_user_by_email(email)
         if user:
             msg = Alert()
             msg.error_message('Email already exists')
         else:
-            database.create_user(email, email, password)
+            Database.create_user(email, email, password)
             msg = Alert()
             msg.success_message('Registration successful')
             self.close()
@@ -344,8 +344,8 @@ class Register(QMainWindow):
 
 # ====================CODE TEST AREA====================:
 
-def main():
-    conn = sqlite3.connect("data/database.db")
+def test():
+    conn = sqlite3.connect("data/Database.db")
     cur = conn.cursor()
 
     username: str = input("Enter your username: ")
@@ -380,9 +380,12 @@ def main():
 
     conn.commit()
     cur.close()
-
-if __name__ == "__main__":    
+    
+def main():
     app = QApplication(sys.argv)
     login = Login()
     login.show()
     sys.exit(app.exec())
+
+if __name__ == "__main__":    
+    main()

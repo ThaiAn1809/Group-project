@@ -12,15 +12,17 @@ import requests
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import AuthHandler
 
 
 # ====================CLASS AREA====================:
 
 
+
 # ====================FUNCTION AREA====================:
 
 def main()->None:
-    raise NotImplementedError("main() is missing code.")
+    AuthHandler.main()
 
 
 if __name__ == "__main__":
