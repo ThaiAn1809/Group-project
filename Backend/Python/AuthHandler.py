@@ -9,7 +9,7 @@ app_password: str = "fimhhmpykyoyaxuc"  # ! do not touch on this varible
 from PyQt6.QtWidgets import QMainWindow,QApplication,QLineEdit,QMessageBox, QPushButton
 from PyQt6 import uic
 import sys
-import Database
+import Python.Database as Database
 import sqlite3
 import smtplib
 import re
