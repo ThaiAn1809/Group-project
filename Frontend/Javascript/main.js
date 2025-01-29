@@ -7,7 +7,7 @@ const port = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.send('Started server');
+    res.send('Server started');
 })
 
 app.listen(port, () => {
