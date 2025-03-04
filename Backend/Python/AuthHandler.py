@@ -1,7 +1,7 @@
 # ===============IMPORTANT THINGS AREA===============:
 
 # ! important variables!!!:
-app_password: str = "fimhhmpykyoyaxuc"  # ! do not touch on this varible
+app_password: str = "fimhhmpykyoyaxuc"  # ! do not touch on this variable
 # ! important variables!!!
 
 # ====================IMPORTING AREA====================:
@@ -20,28 +20,28 @@ from email.mime.text import MIMEText
 # ==============CLASS EXCEPTIONS AREA==============:
 
 
-class InvaildEmail(Exception):
-    """a custom exception name InvaildEmail
+class InvalidEmail(Exception):
+    """a custom exception name InvalidEmail
 
     Args:
         Exception (type): the Exception class
     """
 
-    def __init__(self, email: str, message="Invaild email"):
-        self.mesage = message
+    def __init__(self, email: str, message="Invalid email"):
+        self.message = message
         self.email = email
         super().__init__(f"{message}: {email}")
 
 
-class InvaildPassword(Exception):
-    """a custom exception name InvaildPassword
+class InvalidPassword(Exception):
+    """a custom exception name InvalidPassword
 
     Args:
         Exception (type): the Exception class
     """
 
-    def __init__(self, password: str, message="Invaild password"):
-        self.mesage = message
+    def __init__(self, password: str, message="Invalid password"):
+        self.message = message
         self.email = password
         super().__init__(f"{message}: {password}")
 
@@ -53,7 +53,7 @@ class Email:
     """a email type
 
     Raises:
-        InvaildEmail: raise this if the email is invaild
+        InvalidEmail: raise this if the email is Invalid
 
     """
 
@@ -62,7 +62,7 @@ class Email:
     def __init__(self, address: str):
         self.address = address
         if not self.is_valid():
-            raise InvaildEmail(address)
+            raise InvalidEmail(address)
 
     def is_valid(self) -> bool:
         """This method is for __init__ method for checking if this email is valid or not
@@ -81,12 +81,12 @@ class Email:
         """This method send an email
 
         Args:
-            reciver_email (str): the reciver of the email
+            receiver_email (str): the receiver of the email
             subject (str): the subject of the email
             body (str): the body of the email
             app_password (str): # !THIS EMAIL CAN BE SEND OR CAN'T BE SEND DEPENDS ON THIS app_password VARIABLE
         """
-        # Set up the MIME messagexc
+        # Set up the MIME message xc
         msg = MIMEMultipart()
         msg["From"] = "taskmanagerapp2025@gmail.com"
         msg["To"] = self.address
@@ -117,14 +117,14 @@ class Password:
     """a password type
 
     Raises:
-        InvaildPassword: raise this if the password is invaild
+        InvalidPassword: raise this if the password is Invalid
 
     """
 
     def __init__(self, password: str):
         self.password = password
         if not self.is_valid():
-            raise InvaildPassword(password)
+            raise InvalidPassword(password)
 
     def is_valid(self) -> bool:
         self.__alphabet = [
@@ -274,7 +274,7 @@ class Login(QMainWindow):
         user = Database.find_user_by_email_and_password(email,password)
         if user:
             msg = Alert()
-            msg.success_message('Login succesful')
+            msg.success_message('Login successful')
             
         else:
             msg = Alert()
@@ -323,7 +323,7 @@ class Register(QMainWindow):
         
         if password != confirm_password:
             msg = Alert()
-            msg.error_message('Password and confirm passord does not match')
+            msg.error_message('Password and confirm password does not match')
             self.confirm_password_input.setFocus()
             return
         
@@ -353,7 +353,7 @@ def test():
         email:str = input("Enter your email: ")
         try:
             user_email:type = Email(email)
-        except InvaildEmail as e:
+        except InvalidEmail as e:
             print(f"Error: {repr(e)}")
         else:
             break
@@ -364,7 +364,7 @@ def test():
         )
         try:
             user_password:type = Password(password)
-        except InvaildPassword as e:
+        except InvalidPassword as e:
             print(f"Error: {repr(e)}")
         else:
             break

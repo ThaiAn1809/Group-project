@@ -19,22 +19,3 @@ def has_code(func) -> bool:
             return True
     
     return False
-def hello():
-    ...
-
-def empty_function():
-    pass
-
-def placeholder_function():
-    ...
-
-def real_function():
-    print("Hello, world!")
-
-def another_real_function():
-    x = 5 + 3
-
-print(has_code(empty_function))          # Output: False
-print(has_code(placeholder_function))    # Output: False
-print(has_code(real_function))           # Output: True
-print(has_code(another_real_function)) 
